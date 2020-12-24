@@ -2,19 +2,23 @@ extends KinematicBody2D
 
 const RUNNING_SPEED = 60
 const DASH_SPEED = RUNNING_SPEED * 4
+const WALL_SPEED = RUNNING_SPEED * 2
 const GRAVITY = 10
+const WALL_SLIDE_FRICTION = 9
 const JUMP_POWER = -250
+const WALL_JUMP_POWER = JUMP_POWER
 const FLOOR = Vector2(0, -1);
 const FIREBALL = preload("res://Fireball.tscn")
 
 var speed = RUNNING_SPEED
 var velocity = Vector2()
 var is_on_ground = false
-var is_on_wall = false
+var is_wall_sliding = false
 var is_attacking = false
 var is_running = false
 var is_dash_on_cooldown = false
 var is_dashing = false
+var wall_slide_direction
 
 func get_sprite_direction():
 	if sign($Position2D.position.x) == -1:
@@ -55,6 +59,10 @@ func jump():
 	if is_attacking == false && is_on_ground:
 		velocity.y = JUMP_POWER
 		is_on_ground = false
+	if is_attacking == false && is_wall_sliding:
+		if get_sprite_direction() != wall_slide_direction:
+			velocity.y = WALL_JUMP_POWER
+			is_on_ground = false
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -77,7 +85,10 @@ func _physics_process(delta):
 				dash()
 	
 	update_player_status()
-	velocity.y += GRAVITY
+	if is_wall_sliding:
+		velocity.y += GRAVITY - WALL_SLIDE_FRICTION
+	else:
+		velocity.y += GRAVITY
 	velocity = move_and_slide(velocity, FLOOR)
 
 func update_player_status():
@@ -85,13 +96,21 @@ func update_player_status():
 		if is_on_ground == false:
 			is_attacking = false
 		is_on_ground = true
-		is_on_wall = false
+		is_wall_sliding = false
+		speed = RUNNING_SPEED
+	elif is_on_wall():
+		if velocity.y > 0:
+			is_wall_sliding = true
+			wall_slide_direction = get_sprite_direction()
+			speed = WALL_SPEED
+		else:
+			is_wall_sliding = false
 	else:
+		is_wall_sliding = false
 		if is_attacking == false && is_dashing == false:
 			is_on_ground = false
 			if velocity.y < 0:
 				$AnimatedSprite.play("jump")
-				is_on_wall = false
 			else:
 				$AnimatedSprite.play("fall")
 
