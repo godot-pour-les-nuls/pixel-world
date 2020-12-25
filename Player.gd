@@ -10,6 +10,7 @@ const WALL_JUMP_POWER = JUMP_POWER
 const FLOOR = Vector2(0, -1);
 const FIREBALL = preload("res://Fireball.tscn")
 
+onready var dash_cooldown_hud = get_node("HUD/DashInterface/TextureProgress")
 var speed = RUNNING_SPEED
 var velocity = Vector2()
 var is_on_ground = false
@@ -85,10 +86,13 @@ func _physics_process(delta):
 				dash()
 	
 	update_player_status()
+	update_dash_cooldown_hud()
+	
 	if is_wall_sliding:
 		velocity.y += GRAVITY - WALL_SLIDE_FRICTION
 	else:
 		velocity.y += GRAVITY
+	
 	velocity = move_and_slide(velocity, FLOOR)
 
 func update_player_status():
@@ -132,3 +136,9 @@ func _on_DashDuration_timeout():
 
 func _on_DashCooldown_timeout():
 	is_dash_on_cooldown = false
+	
+func update_dash_cooldown_hud():
+	var waitTime = $DashCooldown.get_wait_time()
+	var timeLeft = $DashCooldown.get_time_left()
+	var timeLeftValue = (1 - (timeLeft / waitTime)) * 100
+	dash_cooldown_hud.value = timeLeftValue
