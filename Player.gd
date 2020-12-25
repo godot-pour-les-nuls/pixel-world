@@ -97,7 +97,8 @@ func update_player_status():
 			is_attacking = false
 		is_on_ground = true
 		is_wall_sliding = false
-		speed = RUNNING_SPEED
+		if is_dashing == false:
+			speed = RUNNING_SPEED
 	elif is_on_wall():
 		if velocity.y > 0:
 			is_wall_sliding = true
