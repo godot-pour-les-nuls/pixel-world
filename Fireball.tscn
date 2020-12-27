@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fireball.gd" type="Script" id=1]
 [ext_resource path="res://sprites/swoosh.png" type="Texture" id=2]
+[ext_resource path="res://sprites/fireball00.png" type="Texture" id=3]
+[ext_resource path="res://sprites/fireball01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/fireball02.png" type="Texture" id=5]
+[ext_resource path="res://sprites/fireball03.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -23,12 +27,17 @@ region = Rect2( 96, 0, 32, 32 )
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
-"name": "shoot",
+"name": "_shoot_old",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 8.5, 16 )
+extents = Vector2( 10.6164, 9.63897 )
 
 [node name="Fireball" type="Area2D"]
 script = ExtResource( 1 )
@@ -39,11 +48,13 @@ animation = "shoot"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 7.5, 0 )
+visible = false
+position = Vector2( 5.47669, 0.438133 )
 shape = SubResource( 6 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 7.5, 0 )
-scale = Vector2( 0.8, 1.6 )
+visible = false
+position = Vector2( 0.148932, 0.515043 )
+scale = Vector2( 1.53511, 0.945148 )
 [connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
