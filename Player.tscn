@@ -84,14 +84,16 @@ script = ExtResource( 2 )
 position = Vector2( 2, 0 )
 z_index = 1
 frames = SubResource( 8 )
-animation = "dash"
+animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 2.38504, 5.09921 )
 shape = SubResource( 9 )
 
 [node name="Position2D" type="Position2D" parent="."]
+visible = false
 position = Vector2( 16.2108, 11.6541 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -149,8 +151,9 @@ margin_right = 16.0
 margin_bottom = 16.0
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 2.33292, 4 )
-scale = Vector2( 0.766708, 1.2 )
+visible = false
+position = Vector2( 2.33292, 4.96623 )
+scale = Vector2( 0.766708, 1.10338 )
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="visibility_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_visibility_changed"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_DashDuration_timeout"]

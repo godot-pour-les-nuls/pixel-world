@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/characters.png" type="Texture" id=1]
+[ext_resource path="res://Snake.gd" type="Script" id=2]
+[ext_resource path="res://sprites/dead_snake.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 3.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8.78115, 7.09301 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 9.40106, 7.09975 )
+
+[node name="Snake" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 18
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "walk"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 1.90735e-06, 8.89291 )
+shape = SubResource( 6 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2( 8.81297, 1.78213 )
+enabled = true
+cast_to = Vector2( 0, 15 )
+collision_mask = 2
+
+[node name="RemoveDeadBody" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( 0.46822, 8.8962 )
+shape = SubResource( 7 )
+[connection signal="timeout" from="RemoveDeadBody" to="." method="_on_RemoveDeadBody_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

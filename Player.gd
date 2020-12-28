@@ -7,7 +7,7 @@ const GRAVITY = 10
 const WALL_SLIDE_FRICTION = 9
 const JUMP_POWER = -250
 const WALL_JUMP_POWER = JUMP_POWER
-const FLOOR = Vector2(0, -1);
+const FLOOR = Vector2(0, -1)
 const FIREBALL = preload("res://Fireball.tscn")
 
 onready var dash_cooldown_hud = $HUD/DashInterface/TextureProgress
@@ -159,11 +159,11 @@ func update_death_counter():
 	deaths_counter += 1
 	deaths_counter_hud.text = str(deaths_counter)
 
-func killPlayer():
+func kill():
 	Sound.play_hit_damage()
 	self.position.x = 161
 	self.position.y = 224
 	update_death_counter()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	killPlayer()
+	kill()
