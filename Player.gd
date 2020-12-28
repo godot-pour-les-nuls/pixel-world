@@ -47,6 +47,7 @@ func attack():
 	if is_on_ground:
 		velocity.x = 0
 	is_attacking = true
+	Sound.play_fireball()
 	$AnimatedSprite.play("attack")
 	var fireball = FIREBALL.instance()
 	var direction = sign($Position2D.position.x)
@@ -63,10 +64,12 @@ func idle():
 func jump():
 	if is_attacking == false && is_on_ground:
 		velocity.y = JUMP_POWER
+		Sound.play_jump()
 		is_on_ground = false
 	if is_attacking == false && is_wall_sliding:
 		if get_sprite_direction() != wall_slide_direction:
 			velocity.y = WALL_JUMP_POWER
+			Sound.play_jump()
 			is_on_ground = false
 
 func _physics_process(delta):
@@ -129,6 +132,7 @@ func _on_AnimatedSprite_animation_finished():
 func dash():
 	is_dashing = true
 	speed = DASH_SPEED
+	Sound.play_dash()
 	$AnimatedSprite.play("dash")
 	is_dash_on_cooldown = true
 	$DashDuration.start()
@@ -156,6 +160,7 @@ func update_death_counter():
 	deaths_counter_hud.text = str(deaths_counter)
 
 func killPlayer():
+	Sound.play_hit_damage()
 	self.position.x = 161
 	self.position.y = 224
 	update_death_counter()

@@ -46,25 +46,25 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "run",
-"speed": 10.0
+"name": "dash",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "attack",
 "speed": 14.0
 }, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
 "frames": [ SubResource( 6 ) ],
 "loop": false,
 "name": "jump",
 "speed": 0.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "dash",
-"speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": false,

@@ -8,6 +8,7 @@ func _ready():
 func _on_Chest_body_entered(body):
 	if isOpened == false:
 		$AnimationPlayer.play("bounce")
+		Sound.play_collect()
 		body.add_chest()
 		
 func _on_AnimationPlayer_animation_finished(anim_name):

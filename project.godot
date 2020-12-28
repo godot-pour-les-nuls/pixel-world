@@ -19,6 +19,10 @@ config/name="Pixel World"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Sound="*res://Sound.tscn"
+
 [display]
 
 window/size/width=1920
