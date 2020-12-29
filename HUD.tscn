@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ChestsCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DeathsCounter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://DashInterface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD.gd" type="Script" id=4]
+[ext_resource path="res://ReturnToMainMenu.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.364706 )
@@ -14,6 +15,12 @@ corner_radius_bottom_left = 4
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )
+
+[node name="TextureButton" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.00833333
+anchor_top = 0.0185185
+anchor_right = 0.161333
+anchor_bottom = 0.0335185
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 16.0

@@ -76,7 +76,7 @@ stretch_mode = 4
 margin_left = 877.0
 margin_top = 448.0
 margin_right = 1043.0
-margin_bottom = 548.0
+margin_bottom = 508.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 custom_constants/separation = 20
@@ -93,6 +93,7 @@ texture_normal = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer/VBoxContainer"]
+visible = false
 margin_top = 40.0
 margin_right = 166.0
 margin_bottom = 60.0
@@ -108,9 +109,9 @@ texture_hover = ExtResource( 11 )
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer/VBoxContainer"]
 margin_left = 52.0
-margin_top = 80.0
+margin_top = 40.0
 margin_right = 114.0
-margin_bottom = 100.0
+margin_bottom = 60.0
 size_flags_horizontal = 4
 
 [node name="ExitButton" type="TextureButton" parent="HUD/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]

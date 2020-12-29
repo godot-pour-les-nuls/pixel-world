@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/return_to_main_menu.png" type="Texture" id=1]
+[ext_resource path="res://sprites/return_to_main_menu_hover.png" type="Texture" id=2]
+[ext_resource path="res://ReturnToMainMenu.gd" type="Script" id=3]
+
+[node name="TextureButton" type="TextureButton"]
+anchor_left = 0.425
+anchor_top = 0.614815
+anchor_right = 0.578
+anchor_bottom = 0.629815
+margin_right = 0.23999
+margin_bottom = 3.8
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="pressed" from="." to="." method="_on_TextureButton_pressed"]
