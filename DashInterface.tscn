@@ -14,8 +14,8 @@ __meta__ = {
 [node name="TextureProgress" type="TextureProgress" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -40.0
-margin_bottom = -40.0001
+margin_right = -36.0
+margin_bottom = -39.5001
 value = 40.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )

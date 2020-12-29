@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sprites/ka1.ttf" type="DynamicFontData" id=1]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 31
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -19,6 +19,7 @@ anchor_bottom = 0.037963
 size_flags_horizontal = 4
 size_flags_vertical = 4
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": true
 }
 
@@ -37,7 +38,7 @@ __meta__ = {
 margin_right = 27.0
 margin_bottom = 36.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 max_lines_visible = 1

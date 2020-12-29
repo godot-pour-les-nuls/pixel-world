@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/ka1.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprites/return_to_main_menu.png" type="Texture" id=2]
+[ext_resource path="res://sprites/return_to_main_menu_hover.png" type="Texture" id=3]
+[ext_resource path="res://VictoryScreen.gd" type="Script" id=4]
+[ext_resource path="res://audio/victory.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 61
+font_data = ExtResource( 1 )
+
+[node name="VictoryScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.827451, 0.843137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You have collected all chests.
+You win!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.425
+anchor_top = 0.614815
+anchor_right = 0.578
+anchor_bottom = 0.629815
+margin_right = 0.23999
+margin_bottom = 3.8
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = true
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

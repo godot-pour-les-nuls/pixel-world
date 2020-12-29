@@ -73,7 +73,9 @@ tracks/1/keys = {
 "values": [ 0.0, 3.94301, -4.92626, 6.77158, -5.46035, -0.0184291 ]
 }
 
-[node name="Chest" type="Area2D"]
+[node name="Chest" type="Area2D" groups=[
+"chest",
+]]
 position = Vector2( 0, -0.0417137 )
 collision_layer = 4
 script = ExtResource( 2 )

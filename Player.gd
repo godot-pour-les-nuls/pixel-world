@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_died
+
 const RUNNING_SPEED = 60
 const DASH_SPEED = RUNNING_SPEED * 4
 const WALL_SPEED = RUNNING_SPEED * 2
@@ -10,9 +12,6 @@ const WALL_JUMP_POWER = JUMP_POWER
 const FLOOR = Vector2(0, -1)
 const FIREBALL = preload("res://Fireball.tscn")
 
-onready var dash_cooldown_hud = $HUD/DashInterface/TextureProgress
-onready var deaths_counter_hud = $HUD/DeathsCounter/HBoxContainer/Number
-onready var chests_counter_hud = $HUD/ChestCounter/HBoxContainer/Number
 var speed = RUNNING_SPEED
 var velocity = Vector2()
 var is_on_ground = false
@@ -22,8 +21,6 @@ var is_running = false
 var is_dash_on_cooldown = false
 var is_dashing = false
 var wall_slide_direction
-var deaths_counter = 0
-var chests_counter = 0
 
 func get_sprite_direction():
 	if sign($Position2D.position.x) == -1:
@@ -93,7 +90,6 @@ func _physics_process(delta):
 				dash()
 	
 	update_player_status()
-	update_dash_cooldown_hud()
 	
 	if is_wall_sliding:
 		velocity.y += GRAVITY - WALL_SLIDE_FRICTION
@@ -144,26 +140,12 @@ func _on_DashDuration_timeout():
 
 func _on_DashCooldown_timeout():
 	is_dash_on_cooldown = false
-	
-func update_dash_cooldown_hud():
-	var waitTime = $DashCooldown.get_wait_time()
-	var timeLeft = $DashCooldown.get_time_left()
-	var timeLeftValue = (1 - (timeLeft / waitTime)) * 100
-	dash_cooldown_hud.value = timeLeftValue
-
-func add_chest():
-	chests_counter += 1
-	chests_counter_hud.text = str(chests_counter)
-
-func update_death_counter():
-	deaths_counter += 1
-	deaths_counter_hud.text = str(deaths_counter)
 
 func kill():
 	Sound.play_hit_damage()
 	self.position.x = 161
 	self.position.y = 224
-	update_death_counter()
+	emit_signal("player_died")
 
 func _on_VisibilityNotifier2D_screen_exited():
 	kill()
