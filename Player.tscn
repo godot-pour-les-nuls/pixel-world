@@ -53,11 +53,6 @@ animations = [ {
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 7 ) ],
-"loop": false,
-"name": "jump",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "dash",
@@ -67,6 +62,11 @@ animations = [ {
 "loop": false,
 "name": "attack",
 "speed": 14.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": false,
+"name": "jump",
+"speed": 0.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=9]

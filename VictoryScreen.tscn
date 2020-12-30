@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/ka1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ReturnToMainMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/you_win.png" type="Texture" id=3]
+[ext_resource path="res://sprites/sky_background.png" type="Texture" id=4]
 [ext_resource path="res://audio/victory.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -15,30 +17,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.188235, 0.827451, 0.843137, 1 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Label" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "You have collected all chests.
-You win!"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureButton" parent="." instance=ExtResource( 2 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 347.0
+margin_top = 424.0
+margin_right = 1573.0
+margin_bottom = 655.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 100
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+margin_right = 1226.0
+margin_bottom = 111.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+margin_right = 1412.0
+margin_bottom = 141.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You have collected all chests.
+You win!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_left = 466.0
+margin_top = 211.0
+margin_right = 760.0
+margin_bottom = 231.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 294.0
+margin_bottom = 20.0

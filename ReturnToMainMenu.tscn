@@ -11,6 +11,7 @@ anchor_right = 0.578
 anchor_bottom = 0.629815
 margin_right = 0.23999
 margin_bottom = 3.8
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 2 )
 script = ExtResource( 3 )
