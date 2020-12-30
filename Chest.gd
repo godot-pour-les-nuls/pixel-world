@@ -16,7 +16,7 @@ func _on_Chest_body_entered(body):
 		
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimatedSprite.play("opening")
-
+	
 func _on_AnimatedSprite_animation_finished():
 	if isOpened:
 		$AnimatedSprite.play("opened")
