@@ -9,13 +9,13 @@ func _ready():
 
 func _on_Chest_body_entered(body):
 	if isOpened == false:
+		isOpened = true
 		$AnimationPlayer.play("bounce")
 		Sound.play_collect()
 		emit_signal("chest_collected")
 		
 func _on_AnimationPlayer_animation_finished(anim_name):
 	$AnimatedSprite.play("opening")
-	isOpened = true
 
 func _on_AnimatedSprite_animation_finished():
 	if isOpened:
