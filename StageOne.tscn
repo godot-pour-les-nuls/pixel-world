@@ -1,20 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GroundTileset.tres" type="TileSet" id=2]
-[ext_resource path="res://sprites/sky_background.png" type="Texture" id=3]
+[ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DecorationTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/stage_one.wav" type="AudioStream" id=6]
 [ext_resource path="res://Snake.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://StageOne.gd" type="Script" id=9]
 
 [node name="StageOne" type="Node2D"]
-position = Vector2( 0, -8 )
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 161, 224 )
-collision_mask = 2147483652
+position = Vector2( 168, 224 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -31,19 +31,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 262172, 0, 0, 262187, 18, 0, 327712, 18, 0, 327714, 21, 0, 327715, 18, 0, 786456, 1, 0, 786457, 2, 0, 786458, 3, 0, 786462, 19, 0, 917510, 19, 0, 917513, 16, 0, 917515, 21, 0, 1310739, 18, 0 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-pause_mode = 2
-scroll_base_scale = Vector2( 0.9, 0.9 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-show_behind_parent = true
-motion_mirroring = Vector2( 608, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -5.96046e-08, 0 )
-scale = Vector2( 0.316667, 0.340741 )
-texture = ExtResource( 3 )
-centered = false
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
 [node name="Chest" parent="." instance=ExtResource( 5 )]
 position = Vector2( 224, 232 )
@@ -72,4 +60,5 @@ position = Vector2( 368, 192 )
 position = Vector2( 520, 80 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
+[connection signal="player_died" from="Player" to="." method="_on_Player_died"]
 [connection signal="player_died" from="Player" to="HUD" method="_on_Player_died"]

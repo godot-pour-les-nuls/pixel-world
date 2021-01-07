@@ -45,11 +45,13 @@ func attack():
 		velocity.x = 0
 	is_attacking = true
 	Sound.play_fireball()
+	get_node("/root/Sound").play_fireball()
 	$AnimatedSprite.play("attack")
 	var fireball = FIREBALL.instance()
 	var direction = sign($Position2D.position.x)
 	fireball.set_fireball_direction(direction)
 	get_parent().add_child(fireball)
+	print_debug($Position2D.global_position)
 	fireball.position = $Position2D.global_position
 
 func idle():
@@ -143,9 +145,11 @@ func _on_DashCooldown_timeout():
 
 func kill():
 	Sound.play_hit_damage()
-	self.position.x = 161
-	self.position.y = 224
 	emit_signal("player_died")
+
+func respawn(x, y):
+	self.position.x = x
+	self.position.y = y
 
 func _on_VisibilityNotifier2D_screen_exited():
 	kill()

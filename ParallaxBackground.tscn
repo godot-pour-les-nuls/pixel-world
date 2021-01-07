@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/sky_background.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+pause_mode = 2
+scroll_base_scale = Vector2( 0.9, 0.9 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+motion_mirroring = Vector2( 608, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( -5.96046e-08, 0 )
+scale = Vector2( 0.316667, 0.340741 )
+texture = ExtResource( 1 )
+centered = false

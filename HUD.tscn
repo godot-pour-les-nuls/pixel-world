@@ -47,13 +47,7 @@ size_flags_horizontal = 2
 margin_top = 900.0
 margin_right = 313.0
 margin_bottom = 1040.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 2
 size_flags_vertical = 10
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="DashCooldown" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 140.0
