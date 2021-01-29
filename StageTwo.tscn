@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://audio/stage_one.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/A Night Of Dizzy Spells.wav" type="AudioStream" id=3]
 [ext_resource path="res://Chest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GroundTileset.tres" type="TileSet" id=5]
 [ext_resource path="res://Snake.tscn" type="PackedScene" id=6]
@@ -46,6 +46,8 @@ position = Vector2( 368, 184 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -6.0
+autoplay = true
 
 [node name="Snake" parent="." instance=ExtResource( 6 )]
 position = Vector2( 576, 160 )
