@@ -11,7 +11,7 @@ func _on_Chest_body_entered(body):
 	if isOpened == false:
 		isOpened = true
 		$AnimationPlayer.play("bounce")
-		Sound.play_collect()
+		Sfx.play_collect()
 		emit_signal("chest_collected")
 		
 func _on_AnimationPlayer_animation_finished(anim_name):

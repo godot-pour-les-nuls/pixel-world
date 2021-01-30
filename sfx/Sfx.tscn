@@ -3,12 +3,17 @@
 [ext_resource path="res://audio/jump.wav" type="AudioStream" id=1]
 [ext_resource path="res://audio/confirm.wav" type="AudioStream" id=2]
 [ext_resource path="res://audio/collect.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sound.gd" type="Script" id=4]
+[ext_resource path="res://sfx/Sfx.gd" type="Script" id=4]
 [ext_resource path="res://audio/dash.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/hit_damage.wav" type="AudioStream" id=6]
 [ext_resource path="res://audio/fireball.wav" type="AudioStream" id=7]
 
-[node name="Sound" type="Node2D"]
+
+
+
+
+
+[node name="Sfx" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Collect" type="AudioStreamPlayer" parent="."]
