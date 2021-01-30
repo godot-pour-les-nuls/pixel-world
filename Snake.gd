@@ -10,7 +10,6 @@ var is_dead = false
 
 func kill():
 	is_dead = true
-	velocity.x = 0
 	$AnimatedSprite.play("dead")
 	$RemoveDeadBody.start()
 
@@ -32,7 +31,6 @@ func _physics_process(delta):
 
 func _on_RemoveDeadBody_timeout():
 	queue_free()
-
 
 func _on_Area2D_body_entered(body):
 	if is_dead == false:

@@ -18,23 +18,23 @@ region = Rect2( 224, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 32, 32, 32 )
+region = Rect2( 448, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 448, 32, 32, 32 )
+region = Rect2( 480, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 480, 32, 32, 32 )
+region = Rect2( 512, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 512, 32, 32, 32 )
+region = Rect2( 544, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 544, 32, 32, 32 )
+region = Rect2( 160, 32, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
@@ -53,20 +53,20 @@ animations = [ {
 "name": "attack",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "dash",
-"speed": 5.0
+"name": "run",
+"speed": 10.0
 }, {
-"frames": [ SubResource( 3 ) ],
+"frames": [ SubResource( 7 ) ],
 "loop": false,
 "name": "jump",
 "speed": 0.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "run",
-"speed": 10.0
+"name": "dash",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=9]

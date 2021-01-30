@@ -22,22 +22,22 @@ region = Rect2( 96, 96, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "walk",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8.78115, 7.09301 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 9.40106, 7.09975 )
+extents = Vector2( 9.43732, 7.02853 )
 
 [node name="Snake" type="KinematicBody2D"]
 collision_layer = 8
@@ -45,17 +45,18 @@ collision_mask = 18
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 0.0787458 )
 frames = SubResource( 5 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 1.90735e-06, 8.89291 )
+modulate = Color( 0.168627, 0.776471, 0.223529, 1 )
+position = Vector2( -0.314981, 8.89291 )
 shape = SubResource( 6 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 position = Vector2( 8.81297, 1.78213 )
 enabled = true
 cast_to = Vector2( 0, 15 )
@@ -66,8 +67,7 @@ collision_mask = 2
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2( 0.46822, 8.8962 )
+position = Vector2( 0.393723, 8.97694 )
 shape = SubResource( 7 )
 [connection signal="timeout" from="RemoveDeadBody" to="." method="_on_RemoveDeadBody_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
