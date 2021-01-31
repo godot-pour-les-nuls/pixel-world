@@ -51,7 +51,6 @@ func attack():
 	var direction = sign($Position2D.position.x)
 	fireball.set_fireball_direction(direction)
 	get_parent().add_child(fireball)
-	print_debug($Position2D.global_position)
 	fireball.position = $Position2D.global_position
 
 func idle():
