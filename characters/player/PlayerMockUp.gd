@@ -13,7 +13,7 @@ func _ready():
 	# on lance l'animation run dès le chargement de la node
 	$AnimatedSprite.play('run')
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# si le KinematicBody2D atteint la limite
 	if self.position.x >= MAP_RIGHT_LIMIT:
 		velocity.x = 0 # il s'arrête

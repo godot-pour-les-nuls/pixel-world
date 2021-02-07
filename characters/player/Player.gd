@@ -10,7 +10,7 @@ const WALL_SLIDE_FRICTION = 9
 const JUMP_POWER = -250
 const WALL_JUMP_POWER = JUMP_POWER
 const FLOOR = Vector2(0, -1)
-const FIREBALL = preload("res://Fireball.tscn")
+const FIREBALL = preload("res://characters/spell/Fireball.tscn")
 
 var speed = RUNNING_SPEED
 var velocity = Vector2()
@@ -44,14 +44,13 @@ func attack():
 	if is_on_ground:
 		velocity.x = 0
 	is_attacking = true
-	Sound.play_fireball()
-	get_node("/root/Sound").play_fireball()
+	Sfx.play_fireball()
+	get_node("/root/Sfx").play_fireball()
 	$AnimatedSprite.play("attack")
 	var fireball = FIREBALL.instance()
 	var direction = sign($Position2D.position.x)
 	fireball.set_fireball_direction(direction)
 	get_parent().add_child(fireball)
-	print_debug($Position2D.global_position)
 	fireball.position = $Position2D.global_position
 
 func idle():
@@ -63,15 +62,15 @@ func idle():
 func jump():
 	if is_attacking == false && is_on_ground:
 		velocity.y = JUMP_POWER
-		Sound.play_jump()
+		Sfx.play_jump()
 		is_on_ground = false
 	if is_attacking == false && is_wall_sliding:
 		if get_sprite_direction() != wall_slide_direction:
 			velocity.y = WALL_JUMP_POWER
-			Sound.play_jump()
+			Sfx.play_jump()
 			is_on_ground = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		run("right")
 	elif Input.is_action_pressed("ui_left"):
@@ -130,7 +129,7 @@ func _on_AnimatedSprite_animation_finished():
 func dash():
 	is_dashing = true
 	speed = DASH_SPEED
-	Sound.play_dash()
+	Sfx.play_dash()
 	$AnimatedSprite.play("dash")
 	is_dash_on_cooldown = true
 	$DashDuration.start()
@@ -144,7 +143,7 @@ func _on_DashCooldown_timeout():
 	is_dash_on_cooldown = false
 
 func kill():
-	Sound.play_hit_damage()
+	Sfx.play_hit_damage()
 	emit_signal("player_died")
 
 func respawn(x, y):

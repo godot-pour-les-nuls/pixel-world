@@ -12,7 +12,7 @@ func _ready():
 func _on_Chest_collected():
 	chests += 1
 	if chests == total_chests:
-		get_tree().change_scene("res://StageTwo.tscn")
+		get_tree().change_scene("res:///stages/victory/VictoryScreen.tscn")
 
 func _on_Player_died():
-	$Player.respawn(128, 224)
+	$Player.respawn(168, 112)

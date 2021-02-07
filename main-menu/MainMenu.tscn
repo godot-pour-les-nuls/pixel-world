@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://PlayerMockUp.tscn" type="PackedScene" id=1]
-[ext_resource path="res://GroundTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://characters/player/PlayerMockUp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tiles/ground/GroundTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://sprites/sky_background.png" type="Texture" id=3]
-[ext_resource path="res://DecorationTileset.tres" type="TileSet" id=4]
+[ext_resource path="res://tiles/decorations/DecorationTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://sprites/title.png" type="Texture" id=5]
 [ext_resource path="res://sprites/start_game.png" type="Texture" id=6]
 [ext_resource path="res://sprites/start_game_hover.png" type="Texture" id=7]
@@ -11,7 +11,7 @@
 [ext_resource path="res://sprites/exit_hover.png" type="Texture" id=9]
 [ext_resource path="res://sprites/options.png" type="Texture" id=10]
 [ext_resource path="res://sprites/options_hovered.png" type="Texture" id=11]
-[ext_resource path="res://MainMenu.gd" type="Script" id=12]
+[ext_resource path="res://main-menu/MainMenu.gd" type="Script" id=12]
 [ext_resource path="res://audio/HHavok-intro.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
